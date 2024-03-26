@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch ./src/server.ts",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +14,11 @@
   "devDependencies": {
     "@types/node": "^20.11.30",
     "tsx": "^4.7.1",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.3",
+    "vitest": "^1.4.0"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "zod": "^3.22.4"
   }
 }
