@@ -1,14 +1,15 @@
-import fastify, { FastifyReply, FastifyRequest } from "fastify";
+import fastify from "fastify";
 
-import * as restaurantUseCase from "./application/use-cases/restaurant"
-import { Restaurant } from "./application/entities/restaurant";
+import { routes } from "./routes";
 
-export const server = fastify()
+async function boostrap() {
+  const server = fastify()
 
-server.post('/restaurant', (request: FastifyRequest<{Body: Restaurant}>, response: FastifyReply) => {
-  return restaurantUseCase.createRestaurantController.handle(request, response)
-})
+  await server.register(routes);
 
-server.listen({ port: 3333 }).then(() => {
-  console.log("HTTP Server running 🚀...")
-})
+  await server.listen({ port: 3333 }).then(() => {
+    console.log("HTTP Server running 🚀...")
+  })
+}
+
+boostrap()
