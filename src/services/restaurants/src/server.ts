@@ -7,8 +7,8 @@ async function boostrap() {
 
   await server.register(routes);
 
-  await server.listen({ port: 3333 }).then(() => {
-    console.log("HTTP Server running 🚀...")
+  await server.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
+    console.log("🚀 HTTP Server running...")
   })
 }
 
