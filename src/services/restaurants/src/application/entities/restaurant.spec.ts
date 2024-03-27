@@ -1,36 +1,33 @@
-import { it, describe, expect } from "vitest"
+import { it, describe, expect, test } from "vitest"
 import { Restaurant } from "./restaurant"
 
-describe('restaurant class', () => {
-  it("allow created an restaurant", () => {
-    const data = {
-      name: "Restaurant XPTO",
-      address: "Street of Rage",
-      image: "http://localhost:1000/images/123456789.png"
-    }
-
-    const restaurant = new Restaurant(data)
-
-    expect(restaurant).toBeInstanceOf(Restaurant)
+test("created an restaurant", () => {
+  const restaurant = new Restaurant({
+    name: "Restaurant XPTO",
+    address: "Street of Rage",
+    image: "http://localhost:1000/images/123456789.png"
   })
 
-  it("not allow created an restaurant without name", () => {
-    const data = {
+  expect(restaurant).toBeInstanceOf(Restaurant)
+  expect(restaurant.name).toEqual("Restaurant XPTO")
+})
+
+test("cannot created an restaurant without name", () => {
+  expect(() => {
+    new Restaurant({
       name: "",
       address: "Street of Rage 2",
       image: "http://localhost:1000/images/123456789.png"
-    }
+    })
+  }).toThrowError()
+})
 
-    expect(() => new Restaurant(data)).toThrowError()
+test("cannot created an restaurant without image", () => {
+  const restaurant = new Restaurant({
+    name: "Restaurant 2",
+    address: "Street of Rages 3",
+    image: ""
   })
 
-  it("allow created an restaurant without image", () => {
-    const data = {
-      name: "",
-      address: "Street of Rages 3",
-      image: ""
-    }
-
-    expect(() => new Restaurant(data)).toThrowError()
-  })
+  expect(restaurant).toBeInstanceOf(Restaurant)
 })
