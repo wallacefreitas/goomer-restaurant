@@ -41,7 +41,6 @@ export class PrismaRestaurantRepository implements RestaurantsRepository {
   }
 
   async save(restaurant: Restaurant): Promise<void> {
-    console.log(restaurant)
     await this.prisma.restaurant.update({
       data: {
         name: restaurant.name,
