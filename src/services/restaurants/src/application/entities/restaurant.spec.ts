@@ -5,7 +5,7 @@ describe('restaurant class', () => {
   it("allow created an restaurant", () => {
     const data = {
       name: "Restaurant XPTO",
-      address: "Street of Rages",
+      address: "Street of Rage",
       image: "http://localhost:1000/images/123456789.png"
     }
 
@@ -17,7 +17,7 @@ describe('restaurant class', () => {
   it("not allow created an restaurant without name", () => {
     const data = {
       name: "",
-      address: "Street of Rages",
+      address: "Street of Rage 2",
       image: "http://localhost:1000/images/123456789.png"
     }
 
@@ -27,7 +27,7 @@ describe('restaurant class', () => {
   it("allow created an restaurant without image", () => {
     const data = {
       name: "",
-      address: "Street of Rages",
+      address: "Street of Rages 3",
       image: ""
     }
 
