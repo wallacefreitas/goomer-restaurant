@@ -9,11 +9,13 @@ export class SaveRestaurantController {
 
   }
 
-  async handle(request: FastifyRequest<{Body: Restaurant}>, response: FastifyReply): Promise<FastifyReply> {
+  async handle(request: FastifyRequest<{Body: Restaurant, Params: { id: string }}>, response: FastifyReply): Promise<FastifyReply> {
     const { name, address, image } = request.body;
+    const { id } = request.params
 
     try {
       await this.saveRestaurantUseCase.execute({
+        id,
         name,
         address,
         image

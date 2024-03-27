@@ -2,6 +2,7 @@ import { Restaurant } from "../../../entities/restaurant";
 import { RestaurantsRepository } from "../../../repositories/restaurants-repository";
 
 interface SaveRestaurantRequest {
+  id: string;
   name: string;
   address: string;
   image: string;
