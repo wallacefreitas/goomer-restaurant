@@ -12,7 +12,10 @@ describe('Create restaurant', () => {
     expect(createRestaurant.execute({
       name: 'Restaurant 4',
       address: 'Street 4',
-      image: ''
+      image: '',
+      starts_at: '',
+      ends_at: '',
+      work_days: [0, 1, 2]
     })).resolves.toBeInstanceOf(Restaurant)
   })
 })
