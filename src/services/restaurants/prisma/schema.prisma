@@ -14,10 +14,13 @@ datasource db {
 }
 
 model Restaurant {
-  id      String @id @default(cuid())
-  name    String
-  address String
-  image   String
+  id        String @id @default(cuid())
+  name      String
+  address   String
+  image     String
+  starts_at String
+  ends_at   String
+  work_days Int[]
 
   @@map("restaurants")
 }
