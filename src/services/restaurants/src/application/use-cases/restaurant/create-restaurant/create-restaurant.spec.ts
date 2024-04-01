@@ -5,7 +5,7 @@ import { Restaurant } from "../../../entities/restaurant";
 import { InMemoryRestaurantRepository } from "../../../../infra/repositories/in-memory/in-memory-restaurant-repository";
 
 describe('Create restaurant', () => {
-  it('should be able to create an appointment', () => {
+  it('should be able to create an restaurant', () => {
     const inMemoryRestaurantsRepository = new InMemoryRestaurantRepository()
     const createRestaurant = new CreateRestaurant(inMemoryRestaurantsRepository)
 
