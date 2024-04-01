@@ -5,6 +5,9 @@ interface CreateRestaurantRequest {
   name: string;
   address: string;
   image: string;
+  starts_at: string;
+  ends_at: string;
+  work_days: number[];
 }
 
 type CreateRestaurantResponse = Restaurant
@@ -14,11 +17,14 @@ export class CreateRestaurant {
 
   }
 
-  async execute({ name, address, image }: CreateRestaurantRequest): Promise<CreateRestaurantResponse> {
+  async execute({ name, address, image, starts_at, ends_at, work_days }: CreateRestaurantRequest): Promise<CreateRestaurantResponse> {
     const restaurant = new Restaurant({
       name,
       address,
-      image
+      image,
+      starts_at,
+      ends_at,
+      work_days
     })
 
     await this.restaurantsRepository.create(restaurant);

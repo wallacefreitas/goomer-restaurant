@@ -15,7 +15,10 @@ export class PrismaRestaurantRepository implements RestaurantsRepository {
         id: restaurant.id,
         name: restaurant.name,
         address: restaurant.address,
-        image: restaurant.image
+        image: restaurant.image,
+        starts_at: restaurant.starts_at,
+        ends_at: restaurant.ends_at,
+        work_days: restaurant.work_days
       }
     })
   }
@@ -25,6 +28,8 @@ export class PrismaRestaurantRepository implements RestaurantsRepository {
   }
 
   async findUnique(id: string): Promise<Restaurant | null> {
+    //await this.prisma.$queryRaw`SELECT * FROM restaurant WHERE id = ${id};`
+
     return await this.prisma.restaurant.findUnique({
       where: {
         id

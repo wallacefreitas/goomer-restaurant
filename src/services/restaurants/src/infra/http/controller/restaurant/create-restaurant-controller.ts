@@ -10,13 +10,16 @@ export class CreateRestaurantController {
   }
 
   async handle(request: FastifyRequest<{Body: Restaurant}>, response: FastifyReply): Promise<FastifyReply> {
-    const { name, address, image } = request.body;
+    const { name, address, image, starts_at, ends_at, work_days } = request.body;
 
     try {
       await this.createRestaurantUseCase.execute({
         name,
         address,
-        image
+        image,
+        starts_at,
+        ends_at,
+        work_days
       })
 
       return response.status(201).send();
