@@ -12,5 +12,27 @@ services:
     volumes:
       - postgres_data:/bitnami/postgresql
 
+  php:
+    image: php:8.2-apache
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./services/products:/var/www/html
+    depends_on:
+      - mysql
+    links:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=docker
+      - MYSQL_PASSWORD=docker
+      - MYSQL_DATABASE=goomer
+      - MYSQL_USER=mysql
+    ports:
+      - '3306:3306'
+
 volumes:
   postgres_data:
