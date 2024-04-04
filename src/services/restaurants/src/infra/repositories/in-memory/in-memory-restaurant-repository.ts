@@ -9,13 +9,19 @@ export class InMemoryRestaurantRepository implements RestaurantsRepository {
       id: "1",
       name: "Restaurant 1",
       address: "Address 1",
-      image: ""
+      image: "",
+      starts_at: "08:00",
+      ends_at: '10:00',
+      work_days: [0, 1, 2]
     },
     {
       id: "2",
       name: "Restaurant 2",
       address: "Address 2",
-      image: ""
+      image: "",
+      starts_at: "08:00",
+      ends_at: '10:00',
+      work_days: [0, 1, 2]
     }
   ];
 
