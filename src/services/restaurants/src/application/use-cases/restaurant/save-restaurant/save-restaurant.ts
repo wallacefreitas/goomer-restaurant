@@ -6,6 +6,9 @@ interface SaveRestaurantRequest {
   name: string;
   address: string;
   image: string;
+  starts_at: string;
+  ends_at: string;
+  work_days: number[]
 }
 
 type SaveRestaurantResponse = Restaurant
