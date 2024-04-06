@@ -1,7 +1,7 @@
 <?php
   include_once('./src/infra/services/router.php');
   include_once('./src/application/entities/product.php');
-  
+
   include_once('./src/infra/repositories/in-memory/in-memory-product-repository.php');
 
   include_once('./src/infra/http/controller/product/find-all-products-controller.php');
@@ -34,18 +34,20 @@
       return $findUniqueProductController->handle($id);
     });
 
-    $router->addRoute('POST', '/product', function($id) use($inMemoryProductRepository) {
+    $router->addRoute('POST', '/product', function() use($inMemoryProductRepository) {
       $createProduct = new CreateProduct($inMemoryProductRepository);
       $createProductController = new CreateProductController($createProduct);
-
-      return $createProductController->handle($id);
+      $body = json_decode(file_get_contents('php://input'));
+      
+      return $createProductController->handle($body);
     });
 
     $router->addRoute('PUT', '/product/:id', function($id) use($inMemoryProductRepository) {
       $saveProduct = new SaveProduct($inMemoryProductRepository);
       $saveProductController = new SaveProductController($saveProduct);
-
-      return $saveProductController->handle($id);
+      $body = json_decode(file_get_contents('php://input'));
+      
+      return $saveProductController->handle($body, $id);
     });
 
     $router->addRoute('DELETE', '/product/:id', function($id) use($inMemoryProductRepository) {
