@@ -1,5 +1,5 @@
 <?php
-  include_once('./src/application/use-cases/product/find-all-products/find-all-products.php');
+  include_once('./application/use-cases/product/find-all-products/find-all-products.php');
 
   class FindAllProductsController {
     private $findAllProductsUseCase;

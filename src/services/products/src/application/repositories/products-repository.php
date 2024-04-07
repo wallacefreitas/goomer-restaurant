@@ -1,6 +1,6 @@
 <?php
 
-include_once('./src/application/entities/product.php');
+include_once('./application/entities/product.php');
 
 interface ProductsRepository {
   public function create(Product $product): void;

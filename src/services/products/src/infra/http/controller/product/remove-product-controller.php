@@ -1,5 +1,5 @@
 <?php
-  include_once('./src/application/use-cases/product/remove-product/remove-product.php');
+  include_once('./application/use-cases/product/remove-product/remove-product.php');
 
   class RemoveProductController {
     private $removeProductUseCase;

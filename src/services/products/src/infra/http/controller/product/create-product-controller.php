@@ -1,6 +1,6 @@
 <?php
-  include_once('./src/application/use-cases/product/create-product/create-product.php');
-  include_once('./src/application/entities/product.php');
+  include_once('./application/use-cases/product/create-product/create-product.php');
+  include_once('./application/entities/product.php');
 
   class CreateProductController {
     private $createProductUseCase;

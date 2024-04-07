@@ -1,7 +1,7 @@
 <?php
 
-include_once('./src/application/entities/product.php');
-include_once('./src/application/repositories/products-repository.php');
+include_once('./application/entities/product.php');
+include_once('./application/repositories/products-repository.php');
 
 class InMemoryProductRepository implements ProductsRepository {
   private $products;

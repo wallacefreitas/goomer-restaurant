@@ -1,6 +1,6 @@
 <?php
 
-include_once('./src/application/repositories/products-repository.php');
+include_once('./application/repositories/products-repository.php');
 
 class CreateProduct {
   private $productRepository;
