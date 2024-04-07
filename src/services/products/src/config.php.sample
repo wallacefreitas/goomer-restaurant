@@ -1,0 +1,5 @@
+<?php
+  putenv("MYSQL_HOST=localhost");
+  putenv("MYSQL_USER=root");
+  putenv("MYSQL_PASSWORD=12345");
+  putenv("MYSQL_DATABASE=mydb");
