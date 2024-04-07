@@ -3,6 +3,7 @@
   include_once('./src/application/entities/product.php');
 
   include_once('./src/infra/repositories/in-memory/in-memory-product-repository.php');
+  include_once('./src/infra/repositories/mysqli/mysqli-product-repository.php');
 
   include_once('./src/infra/http/controller/product/find-all-products-controller.php');
   include_once('./src/infra/http/controller/product/find-unique-product-controller.php');
@@ -19,39 +20,40 @@
   function routes() {
     $router = new Router();
     $inMemoryProductRepository = new InMemoryProductRepository();
+    $mysqliProductRepository = new MySQLiProductRepository();
 
-    $router->addRoute('GET', '/products', function() use($inMemoryProductRepository) {
-      $findAllProducts = new FindAllProducts($inMemoryProductRepository);
+    $router->addRoute('GET', '/products', function() use($mysqliProductRepository) {
+      $findAllProducts = new FindAllProducts($mysqliProductRepository);
       $findAllProductsController = new FindAllProductsController($findAllProducts);
 
       return $findAllProductsController->handle();
     });
 
-    $router->addRoute('GET', '/product/:id', function($id) use($inMemoryProductRepository) {
-      $findUniqueProduct = new FindUniqueProduct($inMemoryProductRepository);
+    $router->addRoute('GET', '/product/:id', function($id) use($mysqliProductRepository) {
+      $findUniqueProduct = new FindUniqueProduct($mysqliProductRepository);
       $findUniqueProductController = new FindUniqueProductController($findUniqueProduct);
 
       return $findUniqueProductController->handle($id);
     });
 
-    $router->addRoute('POST', '/product', function() use($inMemoryProductRepository) {
-      $createProduct = new CreateProduct($inMemoryProductRepository);
+    $router->addRoute('POST', '/product', function() use($mysqliProductRepository) {
+      $createProduct = new CreateProduct($mysqliProductRepository);
       $createProductController = new CreateProductController($createProduct);
       $body = json_decode(file_get_contents('php://input'));
       
       return $createProductController->handle($body);
     });
 
-    $router->addRoute('PUT', '/product/:id', function($id) use($inMemoryProductRepository) {
-      $saveProduct = new SaveProduct($inMemoryProductRepository);
+    $router->addRoute('PUT', '/product/:id', function($id) use($mysqliProductRepository) {
+      $saveProduct = new SaveProduct($mysqliProductRepository);
       $saveProductController = new SaveProductController($saveProduct);
       $body = json_decode(file_get_contents('php://input'));
       
       return $saveProductController->handle($body, $id);
     });
 
-    $router->addRoute('DELETE', '/product/:id', function($id) use($inMemoryProductRepository) {
-      $removeProduct = new RemoveProduct($inMemoryProductRepository);
+    $router->addRoute('DELETE', '/product/:id', function($id) use($mysqliProductRepository) {
+      $removeProduct = new RemoveProduct($mysqliProductRepository);
       $removeProductController = new RemoveProductController($removeProduct);
 
       return $removeProductController->handle($id);
