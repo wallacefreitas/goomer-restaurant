@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "_version": "21.0.0",
+
+  "compilerOptions": {
+    "lib": ["es2018", "esnext.asynciterable"],
+    "module": "node16",
+    "target": "ES2021",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node16",
+    "strictPropertyInitialization": false,
+    "forceConsistentCasingInFileNames": true,
+  }
+}
